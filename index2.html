@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>TinyCode</title>
+	<link href="base.css" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
+	<link href="cards.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+</head>
+
+<body>
+	<div class="modal-wrap">
+		<div class="modal-header">
+		<h2>Tiny Code</h2>
+		</div>
+		<div class="modal-bodies">
+			<div class="modal-body modal-body-form is-showing">
+				<p>
+					Hieronder vul je een code in van 20 tekens. Je hebt momenteel <span id="length"></span> tekens.
+				</p>
+				<form>
+					<input type="text" id="code" class="style-2" autocomplete="off" />
+				</form>
+				<div id="btnDiv"><a id="submitCode" class="btn noselect">Submit code</a></div>
+
+			</div>
+			
+			<div class="modal-body modal-body-success">
+				<div id="result">Hooray!</div>
+			</div>
+			
+			<div class="modal-body modal-body-fail">
+				<div id="result">Try again!</div>
+				<div id="btnDiv"><a id="retry" class="btn noselect">Retry</a></div>
+			</div>
+		</div>
+	</div>
+
+	<script src="jquery-3.1.1.min.js"></script>
+	<script>
+		String.prototype.hashCode = function() {
+		  var hash = 0, i, chr, len;
+		  if (this.length === 0) return hash;
+		  for (i = 0, len = this.length; i < len; i++) {
+			chr   = this.charCodeAt(i);
+			hash  = ((hash << 5) - hash) + chr;
+			hash |= 0; // Convert to 32bit integer
+		  }
+		  return hash;
+		};
+		
+		$(document).ready(function(){
+		
+			var count;
+			$("#length").html(0);
+			
+			$("#code").keyup(function() {
+				count = $("#code").val().length;
+				$("#length").html(count);
+			});
+			
+			$("#retry").click(function(e) {
+				e.preventDefault();
+				
+				var $btn = $(this);
+				var $screen = $btn.parents('.modal-body');
+				var $next = $(".modal-body-form");
+				navigate($screen, $next);
+			});
+			
+			$("#submitCode").click(function(e) {
+				e.preventDefault();
+				
+				var $btn = $(this);
+				var $screen = $btn.parents('.modal-body');
+				var $next = $("#code").val().hashCode() === 2601537 ? $(".modal-body-success") : $(".modal-body-fail");
+				navigate($screen, $next);
+			});
+			
+			function navigate(screen, next) {
+				screen.addClass('animate-out');
+				setTimeout(function() {
+					screen.removeClass('animate-out is-showing');
+					next.addClass('animate-in');
+				}, 700);
+				
+				setTimeout(function() {
+					next.removeClass('animate-in').addClass('is-showing');
+				}, 1200);
+			}
+		});
+		
+		
+		
+		
+	</script>
+</body>
+</html>

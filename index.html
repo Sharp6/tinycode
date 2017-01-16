@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>TinyCode</title>
+	<link href="base.css" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+</head>
+
+<body>
+	<div id="main">
+		<div class="container">
+			<h2>Tiny Code</h2>
+			<p>
+				Hieronder vul je een code in van 20 tekens. Je hebt momenteel <span id="length"></span> tekens.
+			</p>
+			<form>
+				<input type="text" id="code" class="style-2" autocomplete="off" />
+			</form>
+			<div id="btnDiv"><a id="submitCode" disabled="disabled" class="btn noselect">Submit code</a></div>
+			<div id="result"></div>
+		</div>
+	</div>
+
+	<script src="jquery-3.1.1.min.js"></script>
+	<script>
+		String.prototype.hashCode = function() {
+		  var hash = 0, i, chr, len;
+		  if (this.length === 0) return hash;
+		  for (i = 0, len = this.length; i < len; i++) {
+			chr   = this.charCodeAt(i);
+			hash  = ((hash << 5) - hash) + chr;
+			hash |= 0; // Convert to 32bit integer
+		  }
+		  return hash;
+		};
+		
+		var count;
+		//$("#submitCode").prop('disabled', true);
+		$("#length").html(0);
+		
+		$("#code").keyup(function() {
+			count = $("#code").val().length;
+			$("#length").html(count);
+			
+			/*
+			if(count === 13) {
+				$("#submitCode").prop('disabled', false);
+			} else {
+				$("#submitCode").prop('disabled', true);
+			}
+			*/
+		});
+		
+		$("#submitCode").click(function(e) {
+			e.preventDefault();
+			if($("#code").val().hashCode() === 2601537) {
+				$("#result").html("Hurray!");
+			} else {
+				$("#result").html("Nope. Try again!");
+			}
+		});
+		
+		
+		
+		
+	</script>
+</body>
+</html>

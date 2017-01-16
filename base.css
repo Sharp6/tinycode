@@ -1,0 +1,156 @@
+/* FONTS */
+
+@font-face {
+  font-family: "Amitic";
+  src: url("amaticsc/AmaticSC-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Josefin";
+  src: url("josefinsans/JosefinSans-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: "Shadows";
+  src: url("shadowsintolight/ShadowsIntoLight.ttf");
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("roboto/Roboto-Regular.ttf");
+}
+
+/* ============================================================
+  RESET
+============================================================ */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  background: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+body {
+  line-height: 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  clear: both;
+  font-weight: normal;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a img {
+  border: none;
+}
+
+/* ============================================================
+  GLOBALS
+============================================================ */
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  //background-color: #e6e6e8;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #06000a;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+  font-weight: 700;
+  font-family: "Shadows", serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: #9e1a37;
+}
+
+/* clear floated divs */
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+     -khtml-user-select: none; /* Konqueror */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+/* ============================================================
+  TEMPLATE
+============================================================ */
+#wrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+
+#main {
+  padding: 30px 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+#result  {
+	
+	font-size: 3em;
+  width: 100%;
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+}
